@@ -1,11 +1,13 @@
 #include <iostream>
 using namespace std;
 
+// insertion at head or tail
 class Node {
 public:
   int data;
   Node *next;
 
+  // constructor creation
   Node() {
     this->data = 0;
     this->next = NULL;
@@ -17,53 +19,59 @@ public:
   }
 };
 
-void print(Node *&head) {
-  Node *temp = head;
-  while (temp) {
-    // print data
-    // point to next
-    // stop when temp is null
-    cout << temp->data << " ";
-    temp = temp->next;
-  }
-}
+// want to insert node at head of linked list
+//& by refrerence( wants to change in original linked list)
+void insertatHead(Node *&head, Node *&tail, int data)
 
-void insertAtHead(Node *&head, Node *&tail, int data) {
-
-  // Create a Node First
+{
+  // NULL WALA CASE
   if (head == NULL) {
     Node *newNode = new Node(data);
     head = newNode;
-    tail=newNode;
+    tail = newNode;
+    return;
   }
+
+  // step1 : create new node
   Node *newNode = new Node(data);
-  // newNode k next ko head pe point krdo
+  // step 2: point new node next to head
   newNode->next = head;
-  // head ko newNode pe point krdo
+  // step 3: attach head to new node
+
   head = newNode;
 }
 
 void insertAtTail(Node *&head, Node *&tail, int data) {
+
   if (head == NULL) {
     Node *newNode = new Node(data);
     head = newNode;
-    tail=newNode;
+    tail = newNode;
+    return;
   }
-
+  // step1:
   Node *newNode = new Node(data);
+
   tail->next = newNode;
+
   tail = newNode;
 }
+void print(Node *head) {
+
+  Node *temp = head;
+  while (temp != NULL) {
+    cout << temp->data << endl;
+    temp = temp->next;
+  }
+}
+
 int main() {
-  Node *first = new Node(10);
-  Node *second = new Node(20);
-  Node *third = new Node(30);
 
-  first->next = second;
-  second->next = third;
-  third->next = NULL;
-  insertAtHead(first, third, 50);
-  insertAtTail(first, third, 80);
+  Node *head = NULL;
+  Node *tail = NULL;
+  insertatHead(head, tail, 20);
+  insertatHead(head, tail, 45);
+  insertAtTail(head, tail, 30);
 
-  print(first);
+  print(head);
 }
