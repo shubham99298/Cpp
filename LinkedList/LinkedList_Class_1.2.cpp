@@ -97,7 +97,6 @@ void insertAtTail( Node *&head,Node *&tail, int data){
     return;
   }
 
-   
    if(pos==0){
      insertatHead(head, tail,data);
      return;
