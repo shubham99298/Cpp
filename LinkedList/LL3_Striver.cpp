@@ -40,12 +40,13 @@ void print(Node*head){
         head=head->next;
     }
 }
+Node* deleteNodeFromStart(Node*head,){
+    
+}
 int main(){
     vector<int>arr{1,3,2,7};
     Node*head= convertArr2DLL(arr);
     Node*prev=head;
     print(head);
-    
-
     return 0;
 }
