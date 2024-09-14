@@ -7,6 +7,7 @@ int searchInLinkedList(Node<int> *head, int k) {
         {
             return 1;
         }
+        
         temp=temp->next;
     }
     return 0;
